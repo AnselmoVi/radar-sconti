@@ -758,6 +758,46 @@
             box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2);
         }
 
+        .tg-banner-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .tg-avatar-box {
+            position: relative;
+            width: 88px;
+            height: 88px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #10B981, #0284C7, #FF9900);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+        }
+
+        .tg-avatar-box video {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            background: #0F172A;
+        }
+
+        .tg-avatar-status {
+            position: absolute;
+            bottom: 3px;
+            right: 3px;
+            width: 18px;
+            height: 18px;
+            background: #10B981;
+            border: 2.5px solid #0F172A;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10B981;
+        }
+
         .tg-banner-text h2 {
             font-size: 1.35rem;
             font-weight: 800;
@@ -768,6 +808,91 @@
         .tg-banner-text p {
             color: var(--text-secondary);
             font-size: 0.95rem;
+        }
+
+        /* Floating Deal Assistant */
+        .assistant-floating-widget {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1.5px solid #229ED9;
+            padding: 8px 18px 8px 8px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 158, 217, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .assistant-floating-widget:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(34, 158, 217, 0.5);
+            border-color: #38BDF8;
+        }
+
+        .assistant-video-badge {
+            position: relative;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid #10B981;
+        }
+
+        .assistant-video-badge video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .assistant-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .assistant-name {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .assistant-name .pulse-green {
+            width: 8px;
+            height: 8px;
+            background: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10B981;
+            display: inline-block;
+        }
+
+        .assistant-desc {
+            font-size: 0.74rem;
+            color: #9CA3AF;
+            font-weight: 600;
+        }
+
+        @media (max-width: 640px) {
+            .tg-banner-left { flex-direction: column; text-align: center; }
+            .assistant-floating-widget {
+                bottom: 16px;
+                right: 16px;
+                padding: 6px 14px 6px 6px;
+            }
+            .assistant-video-badge {
+                width: 44px;
+                height: 44px;
+            }
+            .assistant-desc { display: none; }
         }
 
         .btn-tg-large {
@@ -1038,9 +1163,15 @@
     <!-- Telegram Sticky Banner -->
     <div class="telegram-cta-card">
         <div class="tg-banner">
-            <div class="tg-banner-text">
-                <h2>⚡ Non perdere i prossimi errori di prezzo!</h2>
-                <p>Le offerte bomba e gli sconti al 90% finiscono in pochi minuti. Ricevili istantaneamente con notifica sul nostro canale Telegram gratuito.</p>
+            <div class="tg-banner-left">
+                <div class="tg-avatar-box">
+                    <video autoplay loop muted playsinline poster="assets/avatar.jpg" src="assets/avatar_assistant.mp4"></video>
+                    <span class="tg-avatar-status" title="Assistente Online 24/7"></span>
+                </div>
+                <div class="tg-banner-text">
+                    <h2>⚡ "Ho appena scovato nuovi errori di prezzo!"</h2>
+                    <p>Le offerte bomba con sconti fino al 90% finiscono in pochissimi minuti. Ricevili istantaneamente con notifica sul nostro canale Telegram gratuito.</p>
+                </div>
             </div>
             <a href="https://t.me/erroridiprezzo_scontii" target="_blank" rel="noopener" class="btn-tg-large" id="hero-telegram-join">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
@@ -2393,6 +2524,17 @@
             <a href="privacy.html">Norme sulla Privacy</a>
         </p>
     </footer>
+
+    <!-- Floating Live Deal Assistant -->
+    <a href="https://t.me/erroridiprezzo_scontii" target="_blank" rel="noopener" class="assistant-floating-widget" id="floating-deal-assistant" title="Entra su Telegram per vedere gli errori di prezzo">
+        <div class="assistant-video-badge">
+            <video autoplay loop muted playsinline poster="assets/avatar.jpg" src="assets/avatar_assistant.mp4"></video>
+        </div>
+        <div class="assistant-text">
+            <span class="assistant-name"><span class="pulse-green"></span> Sara • Radar Sconti</span>
+            <span class="assistant-desc">412 errori attivi • Clicca qui</span>
+        </div>
+    </a>
 
 </body>
 </html>
