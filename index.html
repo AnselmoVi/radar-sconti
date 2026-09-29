@@ -684,12 +684,109 @@
             box-shadow: 0 6px 20px rgba(34, 158, 217, 0.5);
         }
 
-        /* Hero Banner */
+        /* Hero Banner with Big Video Presenter */
         .hero {
             max-width: 1200px;
-            margin: 30px auto 20px;
+            margin: 35px auto 25px;
             padding: 0 20px;
-            text-align: center;
+        }
+
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.5), rgba(17, 24, 39, 0.85));
+            border: 1px solid rgba(55, 65, 81, 0.8);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-layout::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-text-col {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero-video-col {
+            flex-shrink: 0;
+            width: 320px;
+        }
+
+        .hero-video-card {
+            position: relative;
+            width: 320px;
+            height: 380px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2.5px solid #0284C7;
+            box-shadow: 0 15px 40px rgba(2, 132, 199, 0.35), 0 0 30px rgba(16, 185, 129, 0.2);
+            background: #000;
+        }
+
+        .hero-video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-video-badge-top {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #10B981;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-video-glass-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 18px;
+            background: linear-gradient(to top, rgba(11, 15, 25, 0.95) 0%, rgba(11, 15, 25, 0.7) 70%, transparent 100%);
+            backdrop-filter: blur(6px);
+            color: #fff;
+        }
+
+        .hero-video-glass-bottom .video-author {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #F9FAFB;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-video-glass-bottom .video-quote {
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            line-height: 1.3;
         }
 
         .status-pill {
@@ -735,7 +832,13 @@
             color: var(--text-secondary);
             font-size: 1.1rem;
             max-width: 720px;
-            margin: 0 auto 25px;
+            margin-bottom: 25px;
+        }
+
+        .hero-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
         /* Telegram Sticky Call To Action */
@@ -761,26 +864,26 @@
         .tg-banner-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
         }
 
         .tg-avatar-box {
             position: relative;
-            width: 88px;
-            height: 88px;
+            width: 140px;
+            height: 140px;
             flex-shrink: 0;
-            border-radius: 50%;
+            border-radius: 24px;
             padding: 3px;
             background: linear-gradient(135deg, #10B981, #0284C7, #FF9900);
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
         }
 
         .tg-avatar-box video {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
+            border-radius: 21px;
             object-fit: cover;
             display: block;
             background: #0F172A;
@@ -788,18 +891,18 @@
 
         .tg-avatar-status {
             position: absolute;
-            bottom: 3px;
-            right: 3px;
-            width: 18px;
-            height: 18px;
+            bottom: -4px;
+            right: -4px;
+            width: 22px;
+            height: 22px;
             background: #10B981;
-            border: 2.5px solid #0F172A;
+            border: 3px solid #0F172A;
             border-radius: 50%;
-            box-shadow: 0 0 8px #10B981;
+            box-shadow: 0 0 10px #10B981;
         }
 
         .tg-banner-text h2 {
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             font-weight: 800;
             color: #fff;
             margin-bottom: 6px;
@@ -807,7 +910,8 @@
 
         .tg-banner-text p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.98rem;
+            line-height: 1.45;
         }
 
         /* Floating Deal Assistant */
@@ -818,31 +922,32 @@
             z-index: 999;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
-            background: rgba(17, 24, 39, 0.95);
+            background: rgba(17, 24, 39, 0.96);
             backdrop-filter: blur(16px);
-            border: 1.5px solid #229ED9;
-            padding: 8px 18px 8px 8px;
+            border: 2px solid #229ED9;
+            padding: 8px 20px 8px 8px;
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 158, 217, 0.3);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55), 0 0 25px rgba(34, 158, 217, 0.35);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .assistant-floating-widget:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(34, 158, 217, 0.5);
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 35px rgba(34, 158, 217, 0.55);
             border-color: #38BDF8;
         }
 
         .assistant-video-badge {
             position: relative;
-            width: 52px;
-            height: 52px;
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
-            border: 2px solid #10B981;
+            border: 2.5px solid #10B981;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
         }
 
         .assistant-video-badge video {
@@ -858,7 +963,7 @@
         }
 
         .assistant-name {
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             font-weight: 800;
             color: #fff;
             display: flex;
@@ -867,18 +972,46 @@
         }
 
         .assistant-name .pulse-green {
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             background: #10B981;
             border-radius: 50%;
-            box-shadow: 0 0 8px #10B981;
+            box-shadow: 0 0 10px #10B981;
             display: inline-block;
         }
 
         .assistant-desc {
-            font-size: 0.74rem;
+            font-size: 0.78rem;
             color: #9CA3AF;
             font-weight: 600;
+        }
+
+        @media (max-width: 960px) {
+            .hero-layout {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+            .hero-text-col { text-align: center; }
+            .hero p { margin: 0 auto 20px; }
+            .hero-btns { justify-content: center; }
+            .hero-video-col { width: 100%; display: flex; justify-content: center; }
+            .hero-video-card { width: 290px; height: 340px; }
+            .tg-banner-left { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 640px) {
+            .assistant-floating-widget {
+                bottom: 16px;
+                right: 16px;
+                padding: 6px 14px 6px 6px;
+            }
+            .assistant-video-badge {
+                width: 48px;
+                height: 48px;
+            }
+            .assistant-desc { display: none; }
         }
 
         @media (max-width: 640px) {
@@ -1150,14 +1283,36 @@
         </a>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero with Big Video Presenter -->
     <section class="hero">
-        <div class="status-pill">
-            <span class="pulse-dot"></span>
-            RADAR ATTIVO 24H • AGGIORNATO AL 29/09/2026 alle 19:25
+        <div class="hero-layout">
+            <div class="hero-text-col">
+                <div class="status-pill">
+                    <span class="pulse-dot"></span>
+                    RADAR ATTIVO 24H • MONITORAGGIO SCONTI IN TEMPO REALE
+                </div>
+                <h1>Errori di Prezzo e Offerte Amazon Oggi</h1>
+                <p>Scoviamo in tempo reale coupon nascosti, cali improvvisi e minimi storici verificati su Amazon.it per farti risparmiare fino all'80%.</p>
+                <div class="hero-btns">
+                    <a href="https://t.me/erroridiprezzo_scontii" target="_blank" rel="noopener" class="btn-tg-large" id="hero-cta-btn">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+                        UNISCITI AL CANALE TELEGRAM
+                    </a>
+                </div>
+            </div>
+            <div class="hero-video-col">
+                <div class="hero-video-card">
+                    <video autoplay loop muted playsinline poster="assets/avatar.jpg" src="assets/avatar_assistant.mp4"></video>
+                    <div class="hero-video-badge-top">
+                        <span class="pulse-dot"></span> LIVE DEAL HUNTER
+                    </div>
+                    <div class="hero-video-glass-bottom">
+                        <div class="video-author">Sara • Radar Sconti</div>
+                        <div class="video-quote">"Ho appena scovato nuovi errori fino al -80%! 🔥"</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h1>Errori di Prezzo e Offerte Amazon Italia Oggi</h1>
-        <p>Il bot automatico che scova in tempo reale coupon nascosti, cali improvvisi e minimi storici verificati su Amazon.it per risparmiare fino all'80%.</p>
     </section>
 
     <!-- Telegram Sticky Banner -->
